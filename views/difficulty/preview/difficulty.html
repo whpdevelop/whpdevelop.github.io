@@ -1,0 +1,217 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>difficulty总结</title>
+    <link rel="stylesheet" href="../../../css/base.css">
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+      <header>
+        <div class='my_head cssb400f5c2b1904a'>
+              <img src="./images/bTitle.png" alt=""> 
+          </div>
+      </header>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">学习总结</h1>
+<h3 id="arguments">arguments</h3>
+<pre><code class="lang-javascript">
+Javascrip每个函数都会有一个Arguments对象实例arguments，它引用着函数的实参，可以用数组下标的方式&quot;[]&quot;引用arguments的元素。 arguments.length为函数实参个数，arguments.callee引用函数自身。
+arguments他的特性和使用方法
+特性：
+arguments对象和Function是分不开的。因为arguments这个对象不能显式创建，arguments对象只有函数开始时才可用。
+使用方法：
+虽然arguments对象并不是一个数组，但是访问单个参数的方式与访问数组元素的方式相同
+在js中 不需要明确指出参数名，就能访问它们，例如：
+
+function test() {
+        var s = &quot;&quot;;
+        for (var i = 0; i &lt; arguments.length; i++) {
+            alert(arguments[i]);
+            s += arguments[i] + &quot;,&quot;;
+        }
+        return s;
+    }
+    test(&quot;name&quot;, &quot;age&quot;)
+
+输出结果：
+
+name,age
+</code></pre>
+<h3 id="callee">callee</h3>
+<pre><code class="lang-javascript">//callee
+
+        //返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文. 
+
+        //callee是arguments 的一个属性成员，它表示对函数对象本身的引用，这有利于匿名
+
+        //callee还有个非常有用的应用就是用来判断实际参数跟行参是否一致。
+
+        function calleeLengthDemo(arg1, arg2) {
+
+            alert(arguments.callee.toString());//函数自身的引用
+
+            if (arguments.length == arguments.callee.length) {
+
+                window.alert(&quot;验证形参和实参长度正确！&quot;);
+
+                return;
+
+            } else {
+
+                alert(&quot;实参长度：&quot; + arguments.length);
+
+                alert(&quot;形参长度： &quot; + arguments.callee.length);
+
+            }
+
+        }
+
+        //calleeLengthDemo(1);
+
+        //应用场景
+
+        //callee的应用场景一般用于匿名函数
+
+        //var fn = function (n) {
+
+        //    if (n &gt; 0)
+
+        //        return n + fn(n - 1);
+
+        //    return 0;
+
+        //}
+
+        //alert(fn(10));
+
+        //函数内部包含了对自身的引用，函数名仅仅是一个变量名，在函数内部调用即相当于调用一个全局变量，不能很好的体现出是调用自身，这时使用callee会是一个比较好的方法.
+
+        var fn = (function (n) {
+
+            if (n &gt; 0)
+
+                return n + arguments.callee(n - 1);
+
+            return 0;
+
+        })(10);
+
+        alert(fn);
+</code></pre>
+<h3 id="caller">caller</h3>
+<pre><code class="lang-javascript">//caller的应用场景 主要用于察看函数本身被哪个函数调用
+
+ //caller:
+
+        //functionName.caller返回函数的调用者，如果函数直接被调用，则返回null，如果不是在其他函数体内被调用，则返回上层函数体。
+
+        function caller() {
+
+            if (caller.caller) {
+
+                alert(caller.caller.tostring());
+
+            } else {
+
+                alert(&quot;函数直接执行&quot;);
+
+            }
+
+        }
+
+        function handlecaller() {
+
+            caller();
+
+        }
+
+        //handlecaller();//弹出caller函数的调用者handleCaller
+
+        //caller();//由于没有在其他函数体内调用,所以caller为null,就执行了 alert(&quot;函数直接执行&quot;)
+</code></pre>
+<h3 id="-">跨域的技巧</h3>
+<pre><code class="lang-javascript">谷歌浏览器 右击在目标后追加 
+--disable-web-security
+可以实现跨域
+</code></pre>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
