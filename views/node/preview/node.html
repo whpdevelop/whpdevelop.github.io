@@ -1,0 +1,944 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:node</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="node">Node</h1>
+<h2 id="-">课程安排</h2>
+<p>Node介绍
+Express
+模块
+ES6语法
+mogodbDB
+博客项目</p>
+<h2 id="node-">Node介绍</h2>
+<p>官网
+<a href="https://nodejs.org">https://nodejs.org</a></p>
+<pre><code>Node.js 是一种建立在Google Chrome&#39;s V8 引擎上的non-blocking(非阻塞),event-driven(基于事件的)I/O平台。Node.js平台使用的开发语言是JavaScript，平台提供了操作系统底层的API，方便做服务器端编程，
+具体包括：文件操作、进程操作、通信操作等系统模块，支持模块化的开发
+</code></pre><p>C/S</p>
+<ul>
+<li>服务端server</li>
+<li>客户端client</li>
+</ul>
+<p>B/S
+browser 浏览器
+server  服务器</p>
+<h2 id="node-">Node 可以做什么</h2>
+<ul>
+<li>高性能的网站服务器</li>
+<li>简单易用的命名行应用程序</li>
+</ul>
+<ul>
+<li>gulp、less</li>
+<li>i5ting
+<a href="https://github.com/i5ting/tocmd.npm">https://github.com/i5ting/tocmd.npm</a></li>
+<li>browser-sync
+<a href="http://www.browsersync.cn/">http://www.browsersync.cn/</a></li>
+</ul>
+<ul>
+<li>实时多人游戏后台服务器</li>
+<li>高大上的桌面应用程序
+electron</li>
+</ul>
+<ul>
+<li>使用 Web 技术 作为解决方案</li>
+</ul>
+<ul>
+<li>底层的物联网开发</li>
+<li>移动开发</li>
+</ul>
+<ul>
+<li>使用 Web 技术作为解决方案</li>
+</ul>
+<h2 id="-node-js">安装Node.js</h2>
+<p>查看Node是否安装成功/查看Node的当前版本</p>
+<pre><code>node -v
+</code></pre><h2 id="-">切换源</h2>
+<ul>
+<li><p>手工切换
+国内
+<a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a>
+国外
+<a href="http://registry.npmjs.org/">http://registry.npmjs.org/</a></p>
+<p>切换
+npm config set registry <a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a>
+配置后可通过下面方式来验证是否成功
+npm config get registry</p>
+</li>
+<li><p>使用cnpm
+安装：npm install -g cnpm --registry=<a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a></p>
+</li>
+</ul>
+<h2 id="-node-js-">学习Node.js的网站</h2>
+<ul>
+<li>官网
+<a href="https://nodejs.org">https://nodejs.org</a>
+<a href="https://github.com/nodejs/node">https://github.com/nodejs/node</a></li>
+<li>Node.js中文社区
+<a href="https://cnodejs.org/">https://cnodejs.org/</a></li>
+<li>书籍
+深入浅出Node.js</li>
+</ul>
+<h2 id="hello-world">Hello World</h2>
+<ul>
+<li>新建一个js文件</li>
+<li>书写js代码</li>
+<li>启动命令提示符</li>
+<li>切换到js所在的目录，使用node运行js：    node   xxx.js</li>
+</ul>
+<h2 id="-">环境变量</h2>
+<p>当要求系统运行一个程序而没有告诉它程序所在的完整路径时，
+系统首先在当前目录下面寻找该程序，
+如果找不到，则系统会跑到path中指定的路径去找，如果找到，直接运行，
+如果path环境变量中也没有找到，则直接提示不是内部或外部命令，也不是可运行的程序</p>
+<p>当设置完环境变量之后要重启cmd</p>
+<p>添加 path 环境变量的两种方式：</p>
+<p>一：直接在path环境变量中加入程序所属目录的绝对路径，</p>
+<pre><code>两边以 **英文分号** 进行分隔。
+</code></pre><p>例如 <code>feiq.exe</code> 程序的绝对路径是 <code>C:\Program Files\feiQ</code>，
+则在 <code>path</code> 中添加 <code>;C:\Program Files\feiQ;</code></p>
+<p>二：也可以在外部先定义一个变量名，值就是程序所属目录的绝对路径，</p>
+<pre><code>然后在 path 中以 `%变量名%` 的方式引入，两边以分号分隔
+</code></pre><p>例如 <code>qq.exe</code> 程序的绝对路径是 <code>C:\Program Files (x86)\Tencent\QQ\Bin</code>，
+则先定义一个变量名 <code>QQ_HOME</code> ，变量值就是 <code>C:\Program Files (x86)\Tencent\QQ\Bin</code>，
+然后在 <code>path</code> 中填入变量名：<code>;%QQ_HOME%;</code></p>
+<h2 id="node-js-">Node.js快速体验</h2>
+<ul>
+<li>读写文件</li>
+</ul>
+<p>var fs = require(&#39;fs&#39;);
+fs.readFile();
+fs.writeFile();</p>
+<ul>
+<li>处理http请求</li>
+</ul>
+<p>var http = require(&#39;http&#39;);</p>
+<h2 id="path-">path模块</h2>
+<p>可以处理字符串路径问题，拼接两个路径
+var path = require(&#39;path&#39;);
+path.join(&#39;c:/abc&#39;, &#39;xyz&#39;);</p>
+<h2 id="http-">http模块演示</h2>
+<ul>
+<li>根据不同请求，返回不同响应内容</li>
+<li>返回html</li>
+<li>读取文件的路径问题</li>
+</ul>
+<ul>
+<li>相对路径，相对于当前编写的文件查找文件
+fs.readFile(&#39;./statics/css/style.css&#39;,....); </li>
+<li>根路径，在当前文件所处的跟目录查找文件，c:/statics/css.....
+fs.readFile(&#39;/statics/css/style.css&#39;,....); </li>
+</ul>
+<h2 id="content-type-mime-">Content-Type(MIME类型)</h2>
+<p><a href="http://www.w3school.com.cn/media/media_mimeref.asp">http://www.w3school.com.cn/media/media_mimeref.asp</a></p>
+<h2 id="xtpl-">xtpl 模板引擎</h2>
+<ul>
+<li>官网</li>
+</ul>
+<p><a href="https://github.com/xtemplate/xtpl">https://github.com/xtemplate/xtpl</a></p>
+<ul>
+<li>安装</li>
+</ul>
+<p>npm install xtpl xtemplate --save</p>
+<h2 id="-">结合静态页面的案例</h2>
+<p>准备网站的icon
+准备静态页面</p>
+<h2 id="-">相关工具</h2>
+<p>使用到的Node.js的模块</p>
+<ul>
+<li><p>path
+path.join(__dirname, &#39;data/a.txt&#39;)  拼接目录</p>
+</li>
+<li><p>url
+url.parse(s, true).query    解析url上的参数</p>
+</li>
+<li><p>当前文件路径</p>
+<p><strong>filename 执行的当前的文件的路径
+</strong>dirname  执行的当前的文件所在的目录</p>
+</li>
+</ul>
+<ul>
+<li>MIME模块</li>
+</ul>
+<p><a href="https://github.com/broofa/node-mime">https://github.com/broofa/node-mime</a></p>
+<p>在当前项目使用npm安装第三方包
+1、在当前项目文件夹 打开命令窗口  输入  npm init /  npm init -y   创建了package.json
+2、安装包   npm install 包名  --save(在package.json中记录依赖)</p>
+<h2 id="-xtpl">模板引擎 xtpl</h2>
+<h2 id="-render-">封装render方法</h2>
+<h1 id="express">Express</h1>
+<h2 id="express-">Express简介</h2>
+<p>Express 是一个简洁而灵活的 node.js Web应用框架, 提供一系列强大特性帮助你创建各种Web应用。Express 不对 node.js 已有的特性进行二次抽象，我们只是在它之上扩展了Web应用所需的功能。丰富的HTTP工具以及来自Connect框架的中间件随取随用，创建强健、友好的API变得快速又简单</p>
+<h2 id="express-">Express下载安装</h2>
+<p><a href="https://github.com/expressjs/express">https://github.com/expressjs/express</a></p>
+<h2 id="express-">Express示例</h2>
+<pre><code>var express = require(&#39;express&#39;);
+var path = require(&#39;path&#39;);
+var fs = require(&#39;fs&#39;);
+
+var app = express();
+
+//处理静态资源
+app.use(express.static(path.join(__dirname, &#39;statics&#39;)));
+
+app.get(&#39;/&#39;, function(request, response) {
+    fs.readFile(&#39;./views/index.html&#39;, &#39;utf8&#39;, function(err, data) {
+        response.send(data);
+    });
+});
+
+app.listen(3333, function() {
+    console.log(&#39;正在监听：3333&#39;);
+});
+</code></pre><h2 id="express-">Express路由</h2>
+<pre><code>var express = require(&#39;express&#39;);
+
+var router = module.exports = express.Router();
+
+router.get(&#39;/&#39;, function(req, res) {
+    res.send(&#39;index&#39;);
+});
+
+router.get(&#39;/news&#39;, function(req, res) {
+    res.send(&#39;news&#39;);
+});
+</code></pre><h1 id="node-js-">Node.js中的模块化</h1>
+<h2 id="node-js-api-">Node.js的api文档</h2>
+<p><a href="https://nodejs.org/dist/latest-v6.x/docs/api/">https://nodejs.org/dist/latest-v6.x/docs/api/</a></p>
+<h2 id="-">什么是模块化</h2>
+<p>模块化是指解决一个复杂问题时自顶向下逐层把系统划分成若干模块的过程，有多种属性，分别反映其内部特性。</p>
+<h2 id="-">模块化要解决的问题</h2>
+<ol>
+<li>命名冲突</li>
+<li>文件依赖 </li>
+</ol>
+<h2 id="node-js-">Node.js中的模块化</h2>
+<pre><code>在后台开发语言中，比如Java、C#。他们都是隐含模块化的，Node.js默认帮我们提供了模块化这种机制。
+  在服务器端，我们想要使用底层的一些功能需要导入一些“包”来对其操作，比如操作文件、网络需要导入对应的包。其它语言中都是基于类来实现的模块化的思想，使用类来组织文件和文件之间的关联。
+  而Node.js中使用的是JavaScript语言，ECMAScript仅仅规定了基本的语法的书写，并没有规定文件之间
+关联，也就是说每个js文件之间是独立的，Node.js已经帮我们实现了js文件之间的关联（模块化）
+  Node.js中的模块化是基于CommonJS规范的
+</code></pre><h2 id="node-js-">Node.js中的模块化分类</h2>
+<ol>
+<li>核心模块(系统提供的模块)</li>
+<li>文件模块(自定义模块)</li>
+<li>第三方模块</li>
+</ol>
+<h2 id="-">核心模块</h2>
+<ul>
+<li>path模块</li>
+<li>url模块</li>
+<li>http模块
+……</li>
+</ul>
+<h2 id="-">核心模块的存储位置</h2>
+<ul>
+<li>核心模块存储在node.exe中，当node.exe运行的时候，核心模块会被加载，require的时候会加载到内存</li>
+<li>在github上可以找到源代码，lib文件夹下</li>
+<li>核心模块的执行速度比较快</li>
+</ul>
+<h2 id="-">文件模块</h2>
+<ul>
+<li>定义文件模块</li>
+</ul>
+<pre><code>function add(a,b) {
+      return a + b;
+  }
+  //导出成员
+  exports.add = add;
+  //module.exports.add = add;
+</code></pre><ul>
+<li>使用文件模块</li>
+</ul>
+<pre><code> var obj = require(&quot;./add.js&quot;);
+  console.log(obj.add(5,6));
+</code></pre><ul>
+<li>注意：</li>
+</ul>
+<p>文件模块的使用和核心模块不同</p>
+<pre><code> //使用相对于main.js 的方式查找add.js
+  var obj = require(&quot;./add.js&quot;);
+  var obj = require(&quot;./add&quot;);
+  //下面这种方式是引用核心模块或者包
+  //var obj = require(&quot;add&quot;);
+</code></pre><h2 id="-">模块的加载顺序</h2>
+<ul>
+<li>优先从缓存加载模块或者包</li>
+<li>加载文件模块要使用相对路径 ./ ../</li>
+<li>文件模块的加载可以不写后缀名，如果不写后缀名按照 .js &gt; .node &gt; .json的顺序加载</li>
+<li>加载json文件，推荐写上后缀.json</li>
+<li>加载核心模块或包，不写路径和后缀</li>
+<li>module.paths 加载node_modules的时候，按此数组的顺序加载</li>
+</ul>
+<h2 id="module-exports-exports-">module.exports 和 exports的区别</h2>
+<ul>
+<li>当模块被加载后会自动创建一个空对象，module.exports指向这个空对象，最后导出的也是这个对象</li>
+<li>exports是module.exports的引用</li>
+<li>exports只能导出成员，不能直接赋值</li>
+<li>exports既可以导出成员，也可以导出对象</li>
+</ul>
+<h2 id="-">使用模块完成案例</h2>
+<h1 id="-">小项目</h1>
+<h2 id="-">搭建项目结构</h2>
+<h2 id="-">安装第三方包</h2>
+<p>express、xtpl、mongodb</p>
+<h2 id="-">设置静态资源</h2>
+<p>app.use(&#39;/statics&#39;, express.static(path.join(__dirname, &#39;statics&#39;)));</p>
+<h2 id="-xtpl-">设置xtpl模板</h2>
+<p>//app.js 中设置模板
+app.set(&#39;views&#39;,&#39;./views&#39;);
+app.set(&#39;view engine&#39;, &#39;html&#39;);
+app.engine(&#39;html&#39;, xtpl.renderFile);</p>
+<p>//控制器中输出首页
+controller.index = (req, res) =&gt; {</p>
+<pre><code>res.render(&#39;index&#39;, {});
+</code></pre><p>} </p>
+<h2 id="-">获取数据，渲染首页</h2>
+<h2 id="-">详细页面</h2>
+<h2 id="-">无刷新评论功能</h2>
+<h2 id="-post-">自己解析post的数据</h2>
+<p>let data = &#39;&#39;;
+req.on(&#39;data&#39;, (chunk) =&gt; {</p>
+<pre><code>data += chunk;
+</code></pre><p>})</p>
+<p>req.on(&#39;end&#39;, () =&gt; {</p>
+<pre><code>let json = parse(data);
+</code></pre><p>})</p>
+<p>function parse(data) {</p>
+<pre><code>if(!data) {
+    return;
+}
+var json = {};
+let array = data.split(&#39;&amp;&#39;);
+array.forEach(function(item, index) {
+    var data = item.split(&#39;=&#39;);
+    if(data &amp;&amp; data.length &gt;= 2) {
+        json[data[0]] = data[1];
+    }
+})
+return json;
+</code></pre><p>}</p>
+<h2 id="-post-body-parser">使用第三方包解析post数据 body-parser</h2>
+<ul>
+<li>官网
+<a href="https://github.com/expressjs/body-parser">https://github.com/expressjs/body-parser</a></li>
+<li>安装
+npm install body-parser --save</li>
+<li>使用
+var bodyParser = require(&#39;body-parser&#39;)
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())</li>
+</ul>
+<p>req.body 就是post过来的数据</p>
+<h2 id="-ip-">获取客户端ip地址</h2>
+<p>req.socket.remoteAddress</p>
+<h2 id="-">后台管理--接口</h2>
+<h2 id="layer-">layer插件</h2>
+<p><a href="http://layer.layui.com/">http://layer.layui.com/</a></p>
+<h2 id="-">登录</h2>
+<h2 id="cookie">Cookie</h2>
+<ul>
+<li><p>在客户端保存数据的一种方式  </p>
+<ul>
+<li>保存少量数据4k左右，客户端和服务器都可以读写cookie</li>
+<li>如果只是存储数据，可以使用localStorage替换，可以存储5M</li>
+<li>不可以跨域</li>
+</ul>
+</li>
+<li><p>服务端写Cookie</p>
+<ul>
+<li>存储在内存</li>
+</ul>
+<pre><code class="lang-javascript">res.setHeader(&quot;Set-Cookie&quot;,&quot;name=zhangsan1&quot;);
+</code></pre>
+<ul>
+<li>存储在文件</li>
+</ul>
+<pre><code class="lang-javascript">res.setHeader(&quot;Set-Cookie&quot;,&quot;name=zhangsan1; path=/; domain=.tt.com; max-age=180&quot;);
+</code></pre>
+<ul>
+<li>参数<ul>
+<li>path  设置路径，哪个路径可以访问cookie</li>
+<li>expires 设置过期时间，是日期，服务器的日期可能和客户端的日期不一样</li>
+<li>max-age 设置过期时间，秒，第一次访问的时间开始</li>
+<li>domain  设置可以跨子域访问cookie</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>封装读取cookie</p>
+</li>
+</ul>
+<pre><code class="lang-javascript">let cookie = module.exports;
+cookie.getCookie = (req,key)=&gt;{
+    var Cookies = {};
+    req.headers.cookie &amp;&amp; req.headers.cookie.split(&#39;;&#39;).forEach(function( Cookie ) {
+        var parts = Cookie.split(&#39;=&#39;);
+        Cookies[ parts[ 0 ].trim() ] = ( parts[ 1 ] || &#39;&#39; ).trim();
+    });
+    return Cookies[key];
+}
+</code></pre>
+<h2 id="session">Session</h2>
+<ul>
+<li>保持会话状态</li>
+<li>服务端+客户端实现</li>
+<li>模拟Session的实现</li>
+</ul>
+<pre><code class="lang-javascript">const express = require(&quot;express&quot;);
+
+const cookie = require(&quot;../tools/cookie&quot;);
+
+let demo = module.exports = express.Router();
+demo.prefix = &quot;/session&quot;;
+let session = {sids:[]};
+//{sids:[&quot;1111&quot;,&quot;222&quot;], &quot;1111&quot;: {name:zhangsan},}
+demo.get(&quot;/get&quot;, (req, res) =&gt; {
+    res.send(req.headers.cookie);
+});
+demo.get(&quot;/login/:name&quot;,(req, res) =&gt; {
+    let sid =cookie.getCookie(req, &quot;sid&quot;);
+    //第一次登录，判断是否有sid，如果没有sid生成一个，并跳转会当前页面
+    if(!sid) {
+        //唯一标示一个客户端
+        sid = Math.random();
+        //模拟登录
+        res.setHeader(&quot;Set-Cookie&quot;,&quot;sid=&quot;+ sid + &quot;; path=/session&quot;);
+
+        session.sids.push(sid);
+
+        res.redirect(req.originalUrl);
+
+        //console.log(req.originalUrl);
+    }else{
+
+        //模拟登录
+        res.setHeader(&quot;Set-Cookie&quot;,&quot;name=&quot;+req.params.name+&quot;; path=/session&quot;);
+
+        session[sid] = {name: req.params.name};
+
+        res.send(&quot;&lt;a href=&#39;/session&#39;&gt;到首页&lt;/a&gt;&quot;);
+
+    }
+
+});
+
+demo.get(&quot;/&quot;,(req, res) =&gt; {
+
+    //req.headers.cookie
+
+    //判断是否登录成功，先获取sid，根据sid获取当前的登录信息
+    let sid =cookie.getCookie(req, &quot;sid&quot;);
+
+    //根据sid获取 登录信息
+    let obj = session[sid];
+
+    //模拟权限的判断
+    if(obj &amp;&amp; obj.name) {
+        res.send(&quot;后台首页&quot;)
+    }else{
+        res.send(&quot;请先登录&quot;);
+    }
+});
+</code></pre>
+<h2 id="-express-session-session-">使用express-session简化session开发</h2>
+<ul>
+<li>官网</li>
+</ul>
+<p><a href="https://github.com/expressjs/session">https://github.com/expressjs/session</a></p>
+<ul>
+<li>下载</li>
+</ul>
+<p>npm install express-session --save</p>
+<ul>
+<li>使用
+var session = require(&#39;express-session&#39;);
+app.use(session({
+secret: &#39;keyboard cat&#39;,
+resave: false,
+saveUninitialized: false
+}))</li>
+</ul>
+<ul>
+<li>说明<ul>
+<li>secret：用来对session数据进行加密的字符串.这个属性值为必须指定的属性。</li>
+<li>name：表示cookie的name，默认cookie的name是：connect.sid。</li>
+<li>maxAge：cookie过期时间，毫秒。</li>
+<li>resave：是指每次请求都重新设置session cookie，假设你的cookie是6000毫秒过期，每次请求都会再设置6000毫秒。</li>
+<li>saveUninitialized： 是指无论有没有session cookie，每次请求都设置个session cookie ，默认给个标示为 connect.sid。</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">处理错误</h2>
+<p>//处理404的错误
+app.use((req, res) =&gt; {</p>
+<pre><code>res.status(404);
+res.redirect(&quot;/www/web/404.html&quot;);
+</code></pre><p>})</p>
+<p>//处理500的错误
+app.use((err, req, res, next) =&gt; {</p>
+<pre><code>//err 记录到日志文件
+res.status(500);
+res.redirect(&quot;/www/web/500.html&quot;);
+</code></pre><p>})</p>
+<h1 id="mongodb">MongoDB</h1>
+<h2 id="-mongodb">什么是MongoDB</h2>
+<p>MongoDB一个基于分布式文件存储的开源数据库系统。
+MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
+<h2 id="-">什么是数据库</h2>
+<p>存储数据的仓库</p>
+<h2 id="-">相关概念</h2>
+<p>数据库(database)-&gt;集合(collection)-&gt;文档(document)-&gt;域(field)</p>
+<h2 id="-">安装</h2>
+<h2 id="-">学习手册</h2>
+<p><a href="http://www.runoob.com/mongodb/mongodb-tutorial.html">http://www.runoob.com/mongodb/mongodb-tutorial.html</a></p>
+<h2 id="mongodb-">MongoDB基本使用</h2>
+<ul>
+<li>启动MongoDB</li>
+</ul>
+<p>mongod --dbpath 指定存放数据库的路径</p>
+<ul>
+<li>连接到MongoDB的示例</li>
+</ul>
+<p>mongo</p>
+<ul>
+<li><p>查看数据库</p>
+<p>show dbs      查看所有数据库
+db               查看当前数据库
+use 数据库名称切换数据库(如果数据库不存在会自动创建)
+db.dropDatabase()   删除数据</p>
+</li>
+<li><p>增删改查命令</p>
+</li>
+</ul>
+<ul>
+<li>插入文档
+db.集合名称.insert(document);</li>
+</ul>
+<p>示例：
+db.students.insert({name: &quot;张三&quot;, age: 18})</p>
+<ul>
+<li>更新文档</li>
+</ul>
+<p>db.集合名称.update(
+   提交,
+   更新内容,
+   可选参数
+)</p>
+<p>示例：
+db.students. ({name: &quot;张三&quot;}, {age: 20});</p>
+<p>//如果没有找到对应的值，则插入
+//如果有多个匹配的结果，只会修改第一个结果
+db.students.update({name: &quot;张三&quot;}, {age: 20}, {</p>
+<pre><code>upsert: true
+</code></pre><p>});</p>
+<p>//$set 修饰要更新的域，如果不存在则创建
+db.students.update({name: &quot;张三&quot;}, {$set: {age: 20}}, {</p>
+<pre><code>upsert: true
+</code></pre><p>});</p>
+<p>//修改所有匹配的结果
+db.students.update({name: &quot;张三&quot;}, {$set: {age: 20}}, {</p>
+<pre><code>multi: true
+</code></pre><p>});</p>
+<ul>
+<li>删除文档</li>
+</ul>
+<p>db.集合名称.remove(
+   条件,
+   justOne(是否只删除一个文档)
+)</p>
+<p>//只删除一个满足条件的文档
+ db.students.remove({name:18})
+ //删除所有满足条件的文档
+ db.students.remove({name:18}, true)</p>
+<ul>
+<li>查询文档</li>
+</ul>
+<p>db.students.find()
+db.students.find().pretty()</p>
+<ul>
+<li>save方法</li>
+</ul>
+<p>db.集合名称.save(document)
+不指定_id，类似insert
+指定_id，类似update
+db.studetns.save({</p>
+<pre><code>&quot;_id&quot; : ObjectId(&quot;56064f89ade2f21f36b03136&quot;),
+………………
+</code></pre><p>})</p>
+<h2 id="node-js-mongodb">Node.js中操作MongoDB</h2>
+<ul>
+<li>安装插件</li>
+</ul>
+<p><a href="https://github.com/mongodb/node-mongodb-native">https://github.com/mongodb/node-mongodb-native</a></p>
+<p>npm install mongodb --save</p>
+<ul>
+<li><p>连接到MongoDB服务器</p>
+</li>
+<li><p>创建MongoDB的客户端
+var mongodb = require(&#39;MongoDB&#39;);
+var mongoClient = mongodb.MongoClient;</p>
+</li>
+<li><p>连接字符串
+var url = &#39;mongodb://localhost:27017/itcast&#39;;</p>
+</li>
+<li><p>连接到服务器
+mongoClient.connect(url, function(err, db) {
+if(err) {</p>
+<pre><code>throw err;
+</code></pre><p>}
+//进行数据库操作</p>
+<p>//关闭数据库
+db.close();
+});</p>
+</li>
+<li><p>插入数据</p>
+</li>
+</ul>
+<ul>
+<li>插入数据</li>
+</ul>
+<p>//获取集合
+var students = db.collection(&#39;students&#39;);
+//插入一条数据
+students.insertOne({name: &#39;刘备&#39;, age: 18}, function(err, result) {</p>
+<pre><code>if(err) {
+    throw err;
+}
+console.log(result);
+</code></pre><p>});</p>
+<p>//插入多条数据
+students.insertMany([</p>
+<pre><code>{name: &#39;李四&#39;, age: 19},
+{name: &#39;王五&#39;, age: 20}
+</code></pre><p>], function (err, result) {</p>
+<pre><code>if(err) {
+    throw err;
+}
+console.log(result);
+</code></pre><p>})</p>
+<ul>
+<li>更新数据</li>
+</ul>
+<p>//更新一条数据
+students.updateOne({name: &#39;刘备&#39;}, {$set: {age: 20}}, function(err, result) {</p>
+<pre><code>if(err) {
+    throw err;
+}
+console.log(resu);
+</code></pre><p>})</p>
+<p>//更新多条数据
+students.updateMany({name:&#39;abc&#39;}, {$set: {age: 111}}, {multi: true}, function(err, result) {</p>
+<pre><code>if(err) {
+    throw err;
+}
+console.log(result);
+</code></pre><p>})</p>
+<ul>
+<li>删除数据</li>
+</ul>
+<p>students.deleteOne({name:&#39;abc&#39;},  function(err, result) {</p>
+<pre><code>if(err) {
+    throw err;
+}
+console.log(result);
+</code></pre><p>})</p>
+<p>students.deleteMany({name:&#39;abc&#39;},  function(err, result) {</p>
+<pre><code>if(err) {
+    throw err;
+}
+console.log(result);
+</code></pre><p>})</p>
+<ul>
+<li>查询数据</li>
+</ul>
+<p>students.find({name:&#39;李四&#39;}).toArray(function(err, result) {</p>
+<pre><code>console.log(result);
+</code></pre><p>})</p>
+<p>students.find().toArray(function(err, result) {</p>
+<pre><code>console.log(result);
+</code></pre><p>})</p>
+<ul>
+<li>根据id查询一条数据</li>
+</ul>
+<p>var ObjectID = require(&#39;mongodb&#39;).ObjectID;
+posts.findOne({_id: ObjectID(&#39;58abf1bfc692de395ccdd2b0&#39;)}, function(err, data) {</p>
+<pre><code>console.log(data);
+</code></pre><p>});</p>
+<h1 id="ecmascript6-">ECMAScript6语法</h1>
+<ul>
+<li>为什么要学习ES6<ul>
+<li>ES6也叫ECMAScript2015，2015-6月正式发布，向下兼容ES5.1</li>
+<li>ES6来编写Node.js程序</li>
+<li>ES6让JavaScript语言能够开发复杂应用程序</li>
+</ul>
+</li>
+<li><p>严格模式</p>
+<ul>
+<li>ES5中出现的模式</li>
+<li><p>严格模式的目的：</p>
+<ul>
+<li>消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;</li>
+<li>消除代码运行的一些不安全之处，保证代码运行的安全；</li>
+<li>提高编译器效率，增加运行速度；</li>
+<li>为未来新版本的Javascript做好铺垫</li>
+<li><p>参考
+  <a href="https://jsmean.com/blog/post/55a9db88a0367a75336e8884">严格模式的限制</a></p>
+<p>  <a href="http://www.cnblogs.com/jiqing9006/p/5091491.html">严格模式的限制</a></p>
+</li>
+</ul>
+</li>
+<li><p>开启严格模式</p>
+<ul>
+<li>在作用域的最上面  &quot;use strict&quot;<ul>
+<li>js文件的最开头</li>
+<li>function的开头</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>变量和常量</p>
+<ul>
+<li><p>变量 let</p>
+<ul>
+<li>没有变量提升，必须先定义再使用</li>
+<li>有块级作用域</li>
+<li><p>解决问题</p>
+<pre><code class="lang-javascript">window.onload = function () {
+          var ul = document.getElementById(&quot;list&quot;);
+
+          var lis = ul.getElementsByTagName(&quot;li&quot;);
+
+          for(let i = 0, length=lis.length; i &lt; length; i--) {
+
+//                (function (i) {
+//                    lis[i].onclick = function () {
+//                        console.log(i);
+//                    }
+//                })(i);
+
+              lis[i].onclick = function () {
+                  console.log(i);
+              }
+          }
+      }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>常量 const</p>
+<ul>
+<li>常量一旦赋值，不能改变</li>
+<li>有块级作用域</li>
+<li>没有变量提升，先定义再使用</li>
+<li>不可以重复定义</li>
+<li><p>必须有初始值，否则报错</p>
+</li>
+<li><p>在Node.js中，所有接收require()获得的对象都使用const修饰</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>string的扩展方法<ul>
+<li>includes()   返回布尔值，是否包含，第二个参数从第几个位置开始查找</li>
+<li>startsWith() 返回布尔值，是否以...开头，第二个参数从第几个位置开始查找</li>
+<li>endsWith()   返回布尔值，是否以...结尾，第二个参数, 前n个字符以...结尾</li>
+<li>repeat()     重复次数</li>
+</ul>
+</li>
+<li><p>模板</p>
+<ul>
+<li>示例1：<pre><code class="lang-javascript">let name = &quot;steve jobs&quot;;
+let str = `hello ${name}`;
+</code></pre>
+</li>
+<li><p>示例2：</p>
+<pre><code>let obj = {name:&quot;jobs&quot;, age: 18, salary: 1};
+
+let template = `
+  姓名：${obj.name}
+年龄：${obj.age}
+工资：${obj.salary}
+`.trim();
+</code></pre></li>
+<li><p>示例3：生成页面</p>
+</li>
+</ul>
+</li>
+<li><p>箭头函数 </p>
+<ul>
+<li>格式： =&gt; (读作：goesto)  左边是参数，右边是方法体</li>
+<li>演变：function f(x,y) {}  -----&gt;  演变成箭头函数<pre><code> (x, y) =&gt; {}
+ 语法格式简单
+</code></pre></li>
+<li><p>箭头函数的几种形式：</p>
+<ul>
+<li>没有参数 () =&gt; console.log(&quot;hello&quot;);</li>
+<li>有一个参数  a =&gt; --a;</li>
+<li><p>有多个参数  (a,b) =&gt; a - b;</p>
+</li>
+<li><p>方法体有多条语句  (a,b) =&gt; { a=1; b=2; console.log(a-b)};</p>
+</li>
+</ul>
+</li>
+<li>箭头函数的注意事项<ul>
+<li>箭头函数不会影响this的指向</li>
+<li>箭头函数根本没有自己的this，箭头函数内部的this就是外层代码块的this</li>
+<li>箭头函数中没有arguments对象，箭头函数内部的arguments指向外层函数的arguments</li>
+<li>不可以当做构造函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Promise</p>
+</li>
+</ul>
+<p>Promise为了解决回调地狱(callback hell)
+Promise是一个容器，容器中有三种状态
+    Pending  默认，进行中
+    Resolved 已完成
+    Rejected 已失败</p>
+<ul>
+<li>演示1 promise基本使用</li>
+</ul>
+<pre><code>new Promise((resolved, rejected) =&gt; {
+  fs.readFile(&#39;12.txt&#39;, (err, data) =&gt; {
+    if(err) {
+      rejected(err);
+    }
+    resolved(data);
+  })
+}).then((data) =&gt; {
+  console.log(data.toString());
+}, (err) =&gt; {
+  console.log(err);
+})
+</code></pre><ul>
+<li>演示2  封装promise对象</li>
+</ul>
+<pre><code>function readFile(filePath) {
+    return new Promise((resolved, rejected) =&gt; {
+        fs.readFile(filePath, (err, data) =&gt; {
+            if (err) {
+                rejected(err);
+            }
+            resolved(data);
+        })
+    });
+}
+
+
+readFile(&#39;4.txt&#39;)
+    .then((data) =&gt; {
+        console.log(data.toString());
+        return readFile(&#39;2.txt&#39;);
+    })
+    .then((data) =&gt; {
+        console.log(data.toString());
+        return readFile(&#39;3.txt&#39;);
+    })
+    .then((data) =&gt; {
+        console.log(data.toString());
+    })
+    .catch((err) =&gt; {
+        console.log(err);
+    })
+</code></pre><ul>
+<li>ES6的学习站点<ul>
+<li>各个浏览器对ES6的支持
+  <a href="http://kangax.github.io/compat-table/es6/">http://kangax.github.io/compat-table/es6/</a></li>
+<li>学习站点
+  <a href="http://es6.ruanyifeng.com/#README">http://es6.ruanyifeng.com/#README</a></li>
+</ul>
+</li>
+</ul>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
