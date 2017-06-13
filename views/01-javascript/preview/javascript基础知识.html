@@ -1,0 +1,179 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>javascript基础知识</title>
+        <link rel="icon" href="../../../favicon.ico">
+        <link rel="stylesheet" href="../../../css/base.css">
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+  	  <header>
+	    <div class='my_head'>
+	      <img src="../../../images/bTitle02.png" alt=""> 
+	    </div>
+	  </header>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="javascript-">javascript基础知识</h1>
+<h2 id="-">变量命名规则和规范</h2>
+<pre><code>- 规则(必须遵守) 
+    - 由字母、数字、下划线、$组成 (首字符不能为数字)
+    - 区分大小写(javascript是区分大小写的语言)
+    - 不能是关键字和保留字
+    - 变量名长度不能超过255个字符
+- 规范(建议遵守)
+    - 变量的名称要有意义
+    - 变量的命名遵守驼峰命名法，首字母小写,第二个单词的首字母大写
+    - 汉语可以作为变量名。但是不建议使用！！！（low）
+</code></pre><h2 id="-">优先级从高到底</h2>
+<pre><code>    - ()  优先级最高
+    - 一元运算符  ++   --   !
+    - 算数运算符  先*  /  %   后 +   -
+    - 关系运算符  &gt;   &gt;=   &lt;   &lt;=
+    - 相等运算符   ==   !=    ===    !==
+    - 逻辑运算符 先&amp;&amp;   后||
+</code></pre><h2 id="-">转换为字符类型</h2>
+<h3 id="-">使用运算符方法转换字符型（隐式转换）</h3>
+<p>​    字符串加数字,数字就会转成字符串。 + 加号
+​    比如:
+​    console.log(123 + &quot;&quot;);
+​    console.log(18 + &quot;岁&quot;);</p>
+<h3 id="string-">String() 函数转换（显示转换）</h3>
+<p>​    语法：
+​    String(数值) --&gt; 可以转换为字符型
+​    比如 String(123); --&gt; 结果为字符型的 &quot;123&quot;</p>
+<h3 id="tostring-">toString()函数转换</h3>
+<p>​    语法：
+​    数值.toString();
+​    比如：
+​    var num = 123;
+​    num.toString() --&gt; 输出的结果为： 字符型的 &quot;123&quot;;</p>
+<h3 id="string-tostring-">String() 和 toString() 的区别</h3>
+<p>​    .toString() 可以将所有的的数据都转换为字符串，但是要排除null 和 undefined</p>
+<pre><code>     - .toString() 括号中的可以写一个数字，代表进制，对应进制字符串
+     - 二进制：.toString(2);  
+     - 八进制：.toString(8);
+     - 十进制：.toString(10);
+     - 十六进制：.toString(16);
+String()可以将null和undefined转换为字符串，但是没法转进制字符串
+</code></pre><h2 id="-">转换为数值型</h2>
+<pre><code> 可以把字符型的数据转换为数值型。但是以下方式如果要转换的字符串中有一个不是有效数值的字符，返回NaN。
+</code></pre><h3 id="-">使用运算符方法转换数值型（隐式转换）</h3>
+<h3 id="-">数字减字符串，字符串转成数字。乘，除等跟减的转换也是一样。都可以实现隐式数据类型转换</h3>
+<h3 id="-number-">利用Number() 数据类型转换 （显示转换）</h3>
+<pre><code> - Number(&quot;123&quot;) 结果就是 数值型的 123
+ - Number(&quot;中国&quot;) 结果是 NaN
+ - Number(&#39;22px&#39;) 结果是 NaN 注意和下面parseInt 的区别
+</code></pre><h3 id="-parseint-parsefloat-">利用parseInt、 parseFloat 函数转换</h3>
+<pre><code> - parseFloat()把字符串转换成浮点数（小数）
+ - parseInt()把字符串转换成整数
+ - parseInt(&#39;22&#39;) // 22
+ - parseInt(&#39;22px&#39;) // 22 这样是允许的 注意和上面Number 的区别
+ - parseInt(&#39;hello22&#39;); // NaN 里面的数值内容必须以数字开头
+ - parseInt(22.94); // 22 只会留下整数部分
+注意 parseInt() parseFloat()只能转换数值在前的
+</code></pre><h2 id="-boolearn">转换成boolearn</h2>
+<pre><code>- 使用运算符方法转换布尔型（隐式转换） !!
+- 利用Boolean() 数据类型转换 （显示转换）
+</code></pre><h2 id="for-">for循环</h2>
+<h3 id="for-">for ：将一段代码循环执行指定的次数。</h3>
+<pre><code>语法：
+​```
+    for (循环的初始; 循环的条件; 循环的增量) 
+    {
+    需执行的代码;
+    }
+​```
+- var i = 0;  循环的初始    整个for里面 只执行一次 不参与后面的循环
+- i&lt;= 2 循环的条件  只要小于等于2 我下面的语句就会循环执行
+- i++ 循环的增量  i++ 每次加1 这样，变量就增大， 就有可能推出循环  否则永远执行
+</code></pre><h3 id="while-">while循环</h3>
+<h3 id="do-while-">do..while循环</h3>
+<pre><code>基本格式：
+    do
+    { 语句集；
+    } while(条件表达式);
+    do..while 是 while 的一个变异使用。 它和while 最大的区别就是，它至少执行一次语句。
+</code></pre><h3 id="break-continue-">break和continue语句</h3>
+<pre><code>break语句使得循环从For或while中跳出，continue使得跳过循环内剩余的语句而进 入下一次循环。
+</code></pre><p>​            </p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
