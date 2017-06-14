@@ -1,0 +1,10 @@
+
+<header>
+<div class='my_head'>
+<img src="../../../images/bTitle02.png" alt=""> 
+</div>
+</header>
+
+
+<link rel="icon" href="../../../favicon.ico">  
+<link rel="stylesheet" href="../../../css/base.css">
