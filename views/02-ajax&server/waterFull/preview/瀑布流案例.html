@@ -1,0 +1,380 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:瀑布流案例</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-">瀑布流案例</h1>
+<h3 id="-">瀑布流案例</h3>
+<h3 id="-">页面结构</h3>
+<pre><code class="lang-html">&lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;itemBox&quot;&gt;
+            &lt;!-- &lt;div class=&quot;item&quot;&gt;
+                &lt;img src=&quot;./images/1.jpg&quot; alt=&quot;&quot;&gt;
+                &lt;p&gt;一支素笔，一杯花茶，一段时光，浅笑
+                   又安然一场盛世的繁华，愿不倾城，不
+                   倾国，只倾我所有。只为过简单安稳的
+                   生活，单纯不平凡。一支素笔，一杯花
+                   茶，一段时光，浅笑又安然。早安！
+                 &lt;/p&gt;
+            &lt;/div&gt;  --&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class = &quot;btn&quot;&gt;
+            加载更多数据...
+        &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="-">样式</h3>
+<pre><code class="lang-css">&lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #d3d3d3;
+        }
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+        .container&gt;.itemBox {
+            position: relative;
+        }
+        .container&gt;.itemBox&gt;.item {
+            width: 232px;
+            position: absolute;
+        }
+        .container&gt;.itemBox&gt;.item&gt;img {
+            display: block;
+            width: 100%;
+        }
+        .container&gt;.itemBox&gt;.item&gt;p {
+            padding: 10px;
+            background-color: #fff;
+        }
+        .btn {
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            margin: 30px auto;
+            background-color: rgba(0,0,0,.4);
+        }
+        .loading {
+            background-color: green;
+        }
+&lt;/style&gt;
+</code></pre>
+<h3 id="-">瀑布流实现方法</h3>
+<pre><code class="lang-JavaScript">function waterFull(){
+  // 首先获取到图片大盒子
+          //  得到图片大盒子的高度
+  // 得到其中所有的子盒子
+          //  得到所有子盒子的高度
+  // 然后计算出列数
+  // 再计算出间距
+
+  // 获取到所有的图片盒子 安排他们的位置
+    var $itemBox = $(&quot;.itemBox&quot;);
+    var $items = $itemBox.children();
+    var $itemBoxWidth = $itemBox.width();
+    var $itemsWidth = $items.width();
+    var column = Math.floor($itemBoxWidth/$itemsWidth);
+    // console.log(column);
+    var space = ($itemBoxWidth - $itemsWidth*column)/4;
+    // console.log(space);
+    var arrHeight = [];
+    $.each($items,function(i,v){
+        if(i &lt; column){
+            // $(v).css({
+            //     left:i*($itemsWidth+column)
+            // })
+            $(v).css(&quot;left&quot;,i*($itemsWidth+column));
+            // console.log($(v).height());
+            // arrHeight.push($(v).height());
+            arrHeight[i] = $(v).height();
+        } else {
+            // var minBoxHeight = boxHeight[0];
+            // var minIndex = 0;
+            // $.each(boxHeight,function(i,v){
+            //     if(minBoxHeight &gt; v){
+            //         minBoxHeight = v;
+            //         minIndex = i;
+            //     }
+            // })
+            // console.log(minBoxHeight);
+            // console.log(minIndex);
+
+            var minArrHeight = getMin(arrHeight).minArr;
+            var minIndex = getMin(arrHeight).minIndex;
+            $(v).css({
+                left:minIndex*($itemsWidth+column),
+                top:minArrHeight+space
+            });
+            arrHeight[minIndex] = minArrHeight+$(v).height()+space;
+        }
+    })
+    $itemBox.css(&quot;height&quot;,getMax(arrHeight).maxArr);
+    function getMin(arr) {
+        var obj = {};
+            obj.minArr = arr[0];
+            obj.minIndex = 0;
+        $.each(arr,function(i,v){
+            if(obj.minArr &gt; v){
+                obj.minArr = v;
+                obj.minIndex = i;
+            }
+        })
+        return obj;
+    }
+    function getMax(arr) {
+        var obj = {};
+            obj.maxArr = arr[0];
+            obj.maxIndex = 0;
+        $.each(arr,function(i,v){
+            if(obj.maxArr &lt; v){
+                obj.maxArr = v;
+                obj.maxIndex = i;
+            }
+        })
+        return obj;
+    }
+}
+</code></pre>
+<h3 id="-">获取数据的方法</h3>
+<pre><code class="lang-js">// 获取数据和渲染
+function render(){
+            $.ajax({
+                type:&quot;get&quot;,
+                url:&quot;data.php&quot;,
+                dataType:&quot;json&quot;,
+                data:{
+                    page:window.num || 1,
+                    pageSize:15
+                },// 在发送请求之前 为按钮添加类 改变背景颜色和内容
+                beforeSend:function(){
+                    $btn.addClass(&#39;loading&#39;).html(&quot;正在加载数据&quot;);
+                },
+                success:function(data){
+                    window.num = data.page;
+                    var html = &#39;&#39;;
+$.each(data.items,function(i,v){
+   html += &#39;&lt;div class=&quot;item&quot;&gt;&#39;
+        +        &#39;&lt;img src=&quot;&#39;+v.path+&#39;&quot; alt=&quot;&quot;&gt;&#39;
+        +        &#39;&lt;p&gt;&#39;+v.text+&#39;&lt;/p&gt;&#39;
+        +   &#39;&lt;/div&gt;&#39;;
+})
+$(&quot;.itemBox&quot;).append(html);
+                //判断图片有没有加载完成
+                    // 定义一个状态 默认加载完成
+                           //如果没有加载完成就赋值为false
+                //图片有没有加载完成怎么判断呢?
+                    //判断它的高度 如果有高度就已经加载完成了反之没有
+
+                //如果没有怎么办呢?
+                    //利用递归再判断
+                    var isLoad = true;
+                    function isImgLoad(callback){
+                        console.log(11)
+                        //获取到图片 
+                        var $imgs = $(&quot;.item&gt;img&quot;);
+                        //然后遍历 
+                        $.each($imgs,function(i,v){
+                            // 判断是否有高度
+                            if($(v).height()===0){
+                            // 如果没有高度 改变状态值 立即跳出循环
+                                isLoad = false;
+                                return false;
+                            }
+                        })
+                        // 判断状态值 如果为true 图片完成加载 可以操作
+                        // 否则重新判断
+                        if(isLoad){
+                            callback();
+                        $btn.removeClass(&#39;loading&#39;).html(&quot;正在加载数据&quot;);
+
+                        } else {
+                            isLoad = true;
+                            setTimeout(function(){
+                                isImgLoad(callback); // 递归扫描
+                            },500); 
+                        }
+                    }
+                    isImgLoad(waterFull);
+                }
+            })
+}
+</code></pre>
+<h3 id="-">点击按钮和滚动屏幕获取数据</h3>
+<pre><code class="lang-js">// 点击按钮加载数据
+
+        $btn.on(&quot;click&quot;,function(){
+            console.log($(this).hasClass(&quot;loading&quot;))
+            if($(this).hasClass(&quot;loading&quot;)){
+                return false;
+            }
+            render();
+        })
+        // 滚动屏幕加载数据
+        $(window).on(&quot;scroll&quot;,function(){
+            // 获取屏幕的高度
+            var screenH = $(this).height();
+            // 获取图片盒子的高度
+            var itemBoxH = $(&quot;.itemBox&quot;).height();
+            // 获取图片盒子距离顶部的高度
+            var itemBoxTopH = $(&quot;.itemBox&quot;).offset().top;
+            //获取头部卷曲的高度
+            var scrollTopH = $(this).scrollTop();
+            var distence = itemBoxH + itemBoxTopH - scrollTopH -screenH;
+
+            if(distence&lt;=200 &amp;&amp; !$(&quot;.btn&quot;).hasClass(&quot;loading&quot;)){
+                render();
+            }
+        })
+</code></pre>
+<h3 id="-">接口文档</h3>
+<pre><code class="lang-text">接口说明：瀑布流分页数据
+接口地址：data.php
+请求方式：get
+接口参数：page 当前是第几页    pageSize 当前页需要显示多少条
+返回数据：page   下一页的页码
+         items  返回当前页的数据
+            path 图片地址
+            text 文字
+            {page: 2,items:[{path: &quot;./images/1.jpg&quot;,text:&#39;&#39;},…]}
+</code></pre>
+<h3 id="-">接口</h3>
+<pre><code class="lang-php">&lt;?php
+
+    header(&#39;Content-Type:text/html; charset=utf-8&#39;);
+
+    /*获取数据  字符串*/
+    $data = file_get_contents(&#39;data.json&#39;);
+    // echo $data;
+
+    /*转化php对象？ 需要对其操作*/
+    $data = json_decode($data);
+    // var_dump($data) ;
+    /*页码*/
+    $page = $_GET[&#39;page&#39;];
+    /*条数*/
+    $pageSize = $_GET[&#39;pageSize&#39;];
+
+    /*获取数据的起始索引*/
+    $offset = ($page - 1) * $pageSize;
+
+    /*slice 从什么位子开始切割 切割多少条*/
+    $result = array_slice($data, $offset, $pageSize);
+
+    /*下一也的页码*/
+    $page++;
+
+    /*转化json字符串 输出到前台*/
+    echo json_encode(array(&#39;page&#39;=&gt;$page, &#39;items&#39;=&gt;$result));/*｛items:[]｝*/
+
+    sleep(1);
+
+?&gt;
+</code></pre>
+<h3 id="json-">json文件</h3>
+<pre><code class="lang-json">[
+  {
+    &quot;path&quot;: &quot;./images/1.jpg&quot;,
+    &quot;text&quot;: &quot;一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华，愿不倾城，不倾国，只倾我所有。只为过简单安稳的生活，单纯不平凡。一支素笔，一杯花茶，一段时光，浅笑又安然。早安！&quot;
+  },
+  {
+    &quot;path&quot;: &quot;./images/2.jpg&quot;,
+    &quot;text&quot;: &quot;青春，青春，一场盛世不平凡。一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华，愿不倾城，不倾国，只倾我所有。只为过简单安稳的生活，单纯不平凡。一支素笔，一杯花茶，一段时光，浅笑又安然。早安！&quot;
+  },
+  {
+    &quot;path&quot;: &quot;./images/3.jpg&quot;,
+    &quot;text&quot;: &quot;青春，青春，一场盛世不平凡。一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华，愿不倾城，不倾国，只倾我所有。只为过简单安稳的生活，单纯不平凡。一支素笔，一杯花茶，一段时光，浅笑又安然。早安！&quot;
+  }
+]
+</code></pre>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
